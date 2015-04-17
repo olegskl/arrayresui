@@ -1,0 +1,33 @@
+.app-nav
+  flex 0 0 200px
+  height 100%
+  display flex
+  flex-direction column
+  background-color lighten(#1c1c1c, 5%)
+
+  // .app-nav__logo
+  &__logo
+    padding 10px 15px
+    font-size 2.4rem
+    line-height 4rem
+
+  // .app-nav__item-list
+  &__item-list
+    flex 1
+
+  // .app-nav__item
+  &__item
+    display block
+    width 100%
+    padding 10px 15px 10px 12px
+    border-left 3px solid transparent
+
+    // .app-nav__item--active
+    &--active
+      border-left-color #fc803a
+      background-color lighten(#1c1c1c, 10%)
+
+  // .app-nav__legal
+  &__legal
+    padding 10px 15px
+    color darken(#fafafa, 50%)
