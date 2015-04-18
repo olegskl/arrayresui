@@ -1,0 +1,27 @@
+[{
+  "input": {
+    "liquidationRatio": "4",
+    "maxPositionSize": "10000",
+    "orderSize": "1000"
+  },
+  "result": {
+    "position": {
+      "current": 17450,
+      "min": -10762,
+      "max": 20305
+    },
+    "balance": {
+      "current": -528953.13,
+      "min": -614553.58,
+      "max": 317850.6
+    },
+    "pnl": {
+      "current": -9466.63,
+      "min": -9667.63,
+      "max": 0.0
+    },
+    "trades": 3873,
+    "timestamp": "20150418_101803",
+    "duration_ms": 2913
+  }
+}]

@@ -1,0 +1,26 @@
+[{
+  "input": {
+    "orderSize": "100",
+    "spreadThreshold": "1.0"
+  },
+  "result": {
+    "position": {
+      "current": 0,
+      "min": -300,
+      "max": 0
+    },
+    "balance": {
+      "current": 4.0,
+      "min": 0.0,
+      "max": 3866.0
+    },
+    "pnl": {
+      "current": 4.0,
+      "min": -31.0,
+      "max": 13.0
+    },
+    "trades": 6,
+    "timestamp": "20150418_101720",
+    "duration_ms": 1338
+  }
+}]

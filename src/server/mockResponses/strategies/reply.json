@@ -1,0 +1,359 @@
+{
+  "strategy_12": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 1000
+      },
+      "maxPositionSize": {
+        "type": "i",
+        "value": 10000
+      }
+    }
+  },
+  "strategy_11": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "spreadThresholdSmaller": {
+        "type": "f",
+        "value": 0.5
+      },
+      "spreadThresholdLarger": {
+        "type": "f",
+        "value": 1.0
+      },
+      "maxPosition": {
+        "type": "i",
+        "value": 1000
+      }
+    }
+  },
+  "strategy_22": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "spreadThreshold": {
+        "type": "f",
+        "value": 1.0
+      }
+    }
+  },
+  "strategy_8": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "spreadThresholdSmaller": {
+        "type": "f",
+        "value": 0.5
+      },
+      "spreadThresholdLarger": {
+        "type": "f",
+        "value": 1.0
+      },
+      "maxPosition": {
+        "type": "i",
+        "value": 1000
+      }
+    }
+  },
+  "strategy_19": {
+    "parameters": {
+      "maxPositionSize": {
+        "type": "i",
+        "value": 10000
+      },
+      "liquidationRatio": {
+        "type": "i",
+        "value": 4
+      }
+    }
+  },
+  "strategy_3": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      }
+    }
+  },
+  "strategy_18": {
+    "parameters": {
+      "maxPositionSize": {
+        "type": "i",
+        "value": 10000
+      },
+      "liquidationRatio": {
+        "type": "i",
+        "value": 4
+      }
+    }
+  },
+  "strategy_0": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      }
+    }
+  },
+  "strategy_23": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "spreadThreshold": {
+        "type": "f",
+        "value": 1.0
+      }
+    }
+  },
+  "strategy_7": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "betaThreshold": {
+        "type": "f",
+        "value": 0.01
+      }
+    }
+  },
+  "strategy_20": {
+    "parameters": {
+
+    }
+  },
+  "strategy_5": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "spreadThreshold": {
+        "type": "f",
+        "value": 1.0
+      }
+    }
+  },
+  "strategy_17": {
+    "parameters": {
+      "maxPositionSize": {
+        "type": "i",
+        "value": 10000
+      },
+      "liquidationRatio": {
+        "type": "i",
+        "value": 4
+      }
+    }
+  },
+  "strategy_24": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "spreadThreshold": {
+        "type": "f",
+        "value": 1.0
+      }
+    }
+  },
+  "strategy_10": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "spreadThresholdSmaller": {
+        "type": "f",
+        "value": 0.5
+      },
+      "spreadThresholdLarger": {
+        "type": "f",
+        "value": 1.0
+      },
+      "maxPosition": {
+        "type": "i",
+        "value": 1000
+      }
+    }
+  },
+  "strategy_21": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "spreadThresholdSmaller": {
+        "type": "f",
+        "value": 0.5
+      },
+      "spreadThresholdLarger": {
+        "type": "f",
+        "value": 1.0
+      },
+      "tradeRate": {
+        "type": "i",
+        "value": 10
+      }
+    }
+  },
+  "strategy_13": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 1000
+      },
+      "maxPositionSize": {
+        "type": "i",
+        "value": 10000
+      },
+      "liquidationRatio": {
+        "type": "i",
+        "value": 4
+      }
+    }
+  },
+  "strategy_6": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "betaThreshold": {
+        "type": "f",
+        "value": 0.01
+      }
+    }
+  },
+  "strategy_1": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      }
+    }
+  },
+  "strategy_4": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      }
+    }
+  },
+  "strategy_27": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "seed": {
+        "type": "i",
+        "value": 1337
+      }
+    }
+  },
+  "strategy_9": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "spreadThresholdSmaller": {
+        "type": "f",
+        "value": 0.5
+      },
+      "spreadThresholdLarger": {
+        "type": "f",
+        "value": 1.0
+      },
+      "maxPosition": {
+        "type": "i",
+        "value": 1000
+      }
+    }
+  },
+  "strategy_16": {
+    "parameters": {
+      "maxPositionSize": {
+        "type": "i",
+        "value": 10000
+      }
+    }
+  },
+  "strategy_2": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      }
+    }
+  },
+  "strategy_15": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 1000
+      },
+      "maxPositionSize": {
+        "type": "i",
+        "value": 10000
+      },
+      "liquidationRatio": {
+        "type": "i",
+        "value": 4
+      }
+    }
+  },
+  "strategy_26": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "seed": {
+        "type": "i",
+        "value": 1337
+      }
+    }
+  },
+  "strategy_14": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 1000
+      },
+      "maxPositionSize": {
+        "type": "i",
+        "value": 10000
+      },
+      "liquidationRatio": {
+        "type": "i",
+        "value": 4
+      }
+    }
+  },
+  "strategy_25": {
+    "parameters": {
+      "orderSize": {
+        "type": "i",
+        "value": 100
+      },
+      "spreadThreshold": {
+        "type": "f",
+        "value": 1.0
+      }
+    }
+  }
+}
