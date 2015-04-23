@@ -1,3 +1,5 @@
-{
-  "strategies": "strategies"
-}
+[
+  "foo-strategy",
+  "bar-strategy",
+  "baz-strategy"
+]

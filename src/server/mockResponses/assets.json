@@ -1,3 +1,5 @@
-{
-  "assets": "assets"
-}
+[
+  "foo-asset",
+  "bar-asset",
+  "baz-asset"
+]

@@ -7,13 +7,22 @@ angular
   ]
 
   .config ($stateProvider, $urlRouterProvider) ->
+
+    class OutputController
+      constructor: (Assets, Strategies) ->
+        @assets = (do Assets.getList).$object
+        @strategies = (do Strategies.getList).$object
+
     $stateProvider
       .state 'editor',
         url: '/editor'
         templateUrl: 'templates/editor/editor.tpl.html'
+        controller: OutputController
+        controllerAs: 'appOutput'
       .state 'about',
         url: '/about'
         templateUrl: 'templates/about/about.tpl.html'
+
     $urlRouterProvider
       .when '', '/editor'
 
