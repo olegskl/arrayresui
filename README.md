@@ -1,6 +1,6 @@
 # ArrayResUi
 
-### Installation instructions
+## Installation
 
  1. Install [node.js](https://nodejs.org/)
 
@@ -21,7 +21,7 @@
 
         $ gulp
 
-### Contributing
+## Contributing
 
 When possible we follow the [Gitflow Workflow](http://nvie.com/posts/a-successful-git-branching-model/).
 
