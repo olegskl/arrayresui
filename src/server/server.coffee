@@ -15,9 +15,9 @@ serveStatic = require 'serve-static'
 router = require './router'
 
 # Server configuration:
-staticDir = path.resolve __dirname, process.env.STATIC_DIR || 'static'
-cacheAge = process.env.CACHE_AGE || 24 * 60 * 60 * 1000 # 24 hours
-port = process.env.PORT || 8000
+staticDir = path.resolve __dirname, process.env.STATIC_DIR or 'static'
+cacheAge = process.env.CACHE_AGE or 24 * 60 * 60 * 1000 # 24 hours
+port = process.env.PORT or 8000
 
 # Compatibility headers middleware for Internet Explorer:
 compatibilityHeaders = (request, response, next) ->
