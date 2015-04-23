@@ -1,7 +1,10 @@
 'use strict'
 
 angular
-  .module 'ArrayResUi', ['ui.router']
+  .module 'ArrayResUi', [
+    'ui.router'
+    'restangular'
+  ]
 
   .config ($stateProvider, $urlRouterProvider) ->
     $stateProvider
