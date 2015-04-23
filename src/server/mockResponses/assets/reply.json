@@ -1,0 +1,42 @@
+{
+  "MIC1": {
+    "CCY0": {
+      "ISIN0": {
+        "ticker": "Ticker_0",
+        "availableDates": ["05-27", "05-07", "05-12"]
+      }
+    }
+  },
+  "MIC0": {
+    "CCY1": {
+      "ISIN1": {
+        "ticker": "Ticker_1",
+        "availableDates": ["05-27", "05-07", "05-12"]
+      }
+    }
+  },
+  "MIC2": {
+    "CCY2": {
+      "ISIN5": {
+        "ticker": "Ticker_2",
+        "availableDates": ["05-27", "05-07", "05-12"]
+      },
+      "ISIN4": {
+        "ticker": "Ticker_3",
+        "availableDates": ["05-27", "05-07", "05-12"]
+      },
+      "ISIN3": {
+        "ticker": "Ticker_4",
+        "availableDates": ["05-27", "05-07", "05-12"]
+      },
+      "ISIN2": {
+        "ticker": "Ticker_5",
+        "availableDates": ["05-27", "05-07", "05-12"]
+      },
+      "ISIN6": {
+        "ticker": "Ticker_6",
+        "availableDates": ["05-27", "05-07", "05-12"]
+      }
+    }
+  }
+}

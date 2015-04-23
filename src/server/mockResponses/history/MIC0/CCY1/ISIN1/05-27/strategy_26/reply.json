@@ -1,0 +1,26 @@
+[{
+  "input": {
+    "orderSize": "100",
+    "seed": "1337"
+  },
+  "result": {
+    "position": {
+      "current": 3005,
+      "min": -209,
+      "max": 3005
+    },
+    "balance": {
+      "current": -4.035311E+7,
+      "min": -4.035311E+7,
+      "max": 2798720.0
+    },
+    "pnl": {
+      "current": 34090.0,
+      "min": -59100.0,
+      "max": 154290.0
+    },
+    "trades": 1712,
+    "timestamp": "20150418_101651",
+    "duration_ms": 2515
+  }
+}]

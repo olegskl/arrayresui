@@ -26,6 +26,7 @@ Dependencies
     coffee = require 'gulp-coffee'
     inject = require 'gulp-inject'
     concat = require 'gulp-concat'
+    angularFilesort = require 'gulp-angular-filesort'
     stylus = require 'gulp-stylus'
     autoprefixer = require 'gulp-autoprefixer'
     ngAnnotate = require 'gulp-ng-annotate'
@@ -163,6 +164,7 @@ Not supposed to be used directly. Use `gulp dist` instead.
 
       scriptsAndTemplates = merge scripts
         .add templates
+        .pipe do angularFilesort
         .pipe do ngAnnotate
         .pipe concat 'all.js'
         .pipe do minifyJS
@@ -205,6 +207,7 @@ Not supposed to be used directly. Use `gulp dev` instead.
       scripts = gulp
         .src source.clientScripts
         .pipe coffee bare: false # decoffeify with IIFE wrappers
+        .pipe do angularFilesort
         .pipe gulp.dest destination.clientScripts
 
       styles = gulp
