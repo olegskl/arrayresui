@@ -37,7 +37,7 @@ When possible we follow the [Gitflow Workflow](http://nvie.com/posts/a-successfu
         $ touch server/foo.bar && git add server/foo.bar
         $ git commit -m 'feat(server): added foo'
 
- 3. Push the branch.
+ 3. Push the branch and add upstream (tracking) reference.
 
         $ git push -u
 
