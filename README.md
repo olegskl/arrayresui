@@ -41,4 +41,4 @@ When possible we follow the [Gitflow Workflow](http://nvie.com/posts/a-successfu
 
         $ git push -u
 
- 4. Create a pull request.
+ 4. Create a [pull request](https://help.github.com/articles/using-pull-requests/) to the `develop` branch.
