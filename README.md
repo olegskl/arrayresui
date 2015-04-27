@@ -31,9 +31,9 @@ When possible we follow the [Gitflow Workflow](http://nvie.com/posts/a-successfu
         $ cd arrayresui
         $ git checkout develop
 
- 2. Create a topic branch for your idea, and commit to it.
+ 2. Create a new topic branch for your idea, and commit to it.
 
-        $ git checkout feat-awesome-idea
+        $ git checkout -b feat-awesome-idea
         $ touch server/foo.bar && git add server/foo.bar
         $ git commit -m 'feat(server): added foo'
 
