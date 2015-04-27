@@ -23,7 +23,9 @@
 
 ## Contributing
 
-When possible we follow the [Gitflow Workflow](http://nvie.com/posts/a-successful-git-branching-model/).
+When possible we follow the [Gitflow Workflow](http://nvie.com/posts/a-successful-git-branching-model/) with `master` branch reserved for releases and `develop` branch for development.
+
+Never commit to `master` branch. Instead, create pull requests to `develop` branch.
 
  1. Clone the project and checkout the `develop` branch.
 
