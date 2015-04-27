@@ -1,7 +1,7 @@
 Build system
 ================================================================================
 
-This is the build system for tbd.
+This is the build system for ArrayResUi.
 
  - Run `gulp` or `gulp serve-dev` to launch a live-reloaded site from dev build.
  - Run `gulp serve-dist` to launch a live-reloaded site from distribution build.
@@ -9,7 +9,7 @@ This is the build system for tbd.
 
 By default both *dev* and *dist* will write the generated code to the *./build*
 folder. Use `--dest` option to modify this behavior. Useful when deploying to
-the production environment, e.g. `gulp dist --dest="/srv/tbd"`.
+the production environment, e.g. `gulp dist --dest="/srv/arrayresui"`.
 
     'use strict'
 
