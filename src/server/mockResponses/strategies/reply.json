@@ -190,6 +190,10 @@
   },
   "strategy_21": {
     "parameters": {
+      "tradeRate": {
+        "type": "i",
+        "value": 10
+      },
       "orderSize": {
         "type": "i",
         "value": 100
@@ -201,10 +205,6 @@
       "spreadThresholdLarger": {
         "type": "f",
         "value": 1.0
-      },
-      "tradeRate": {
-        "type": "i",
-        "value": 10
       }
     }
   },

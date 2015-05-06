@@ -1,26 +1,33 @@
-[{
-  "input": {
-    "orderSize": "100",
-    "spreadThreshold": "1.0"
-  },
-  "result": {
-    "position": {
-      "current": 100,
-      "min": -100,
-      "max": 100
+{
+  "20150418_101717": {
+    "input": {
+      "parameters": {
+        "orderSize": 100,
+        "spreadThreshold": 1.0
+      },
+      "username": "default_user",
+      "strategy": "weighted_price"
     },
-    "balance": {
-      "current": -1664.0,
-      "min": -1664.0,
-      "max": 1638.0
+    "result": {
+      "position": {
+        "current": 200,
+        "min": 0,
+        "max": 200
+      },
+      "balance": {
+        "current": -1046.0,
+        "min": -1046.0,
+        "max": 0.0
+      },
+      "pnl": {
+        "current": 0.0,
+        "min": -0.5,
+        "max": 0.0
+      },
+      "trades": 3,
+      "timestamp": "20150418_101717",
+      "duration_ms": 5089
     },
-    "pnl": {
-      "current": 3.0,
-      "min": -6.0,
-      "max": 3.0
-    },
-    "trades": 7,
-    "timestamp": "20150418_101718",
-    "duration_ms": 1244
+    "resultGraphs": ["pnl", "position"]
   }
-}]
+}

@@ -1,26 +1,33 @@
-[{
-  "input": {
-    "orderSize": "100",
-    "seed": "1337"
-  },
-  "result": {
-    "position": {
-      "current": 6284,
-      "min": -200,
-      "max": 6484
+{
+  "20150418_101657": {
+    "input": {
+      "parameters": {
+        "seed": 1337,
+        "orderSize": 100
+      },
+      "username": "default_user",
+      "strategy": "zero_intelligence"
     },
-    "balance": {
-      "current": -33649.12,
-      "min": -34726.62,
-      "max": 1058.0
+    "result": {
+      "position": {
+        "current": 10675,
+        "min": -300,
+        "max": 10875
+      },
+      "balance": {
+        "current": -386018.57,
+        "min": -393196.57,
+        "max": 10880.0
+      },
+      "pnl": {
+        "current": -971.32,
+        "min": -1475.07,
+        "max": 122.04
+      },
+      "trades": 657,
+      "timestamp": "20150418_101657",
+      "duration_ms": 1332
     },
-    "pnl": {
-      "current": 221.64,
-      "min": -13.0,
-      "max": 256.06
-    },
-    "trades": 475,
-    "timestamp": "20150418_101656",
-    "duration_ms": 3467
+    "resultGraphs": ["pnl", "position"]
   }
-}]
+}

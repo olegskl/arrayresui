@@ -1,27 +1,130 @@
-[{
-  "input": {
-    "liquidationRatio": "4",
-    "maxPositionSize": "10000",
-    "orderSize": "1000"
+{
+  "20150424_162258": {
+    "input": {
+      "parameters": {
+        "orderSize": 1000,
+        "maxPositionSize": 10000,
+        "liquidationRatio": 4
+      },
+      "username": "default_user",
+      "strategy": "simplest_bidask_price_linear_order_sizing_with_liquidation_2"
+    },
+    "result": {
+      "position": {
+        "current": -15647,
+        "min": -26647,
+        "max": 18035
+      },
+      "balance": {
+        "current": 1540108.3,
+        "min": -1766339.25,
+        "max": 2619758.3
+      },
+      "pnl": {
+        "current": 2790.55,
+        "min": -5221.5,
+        "max": 4255.25
+      },
+      "trades": 1902,
+      "timestamp": "20150424_162258",
+      "duration_ms": 1232
+    },
+    "resultGraphs": ["pnl", "position"]
   },
-  "result": {
-    "position": {
-      "current": -15647,
-      "min": -26647,
-      "max": 18035
+  "20150424_162234": {
+    "input": {
+      "parameters": {
+        "orderSize": 900,
+        "maxPositionSize": 10000,
+        "liquidationRatio": 4
+      },
+      "username": "default_user",
+      "strategy": "simplest_bidask_price_linear_order_sizing_with_liquidation_2"
     },
-    "balance": {
-      "current": 1540108.3,
-      "min": -1766339.25,
-      "max": 2619758.3
+    "result": {
+      "position": {
+        "current": -13014,
+        "min": -22914,
+        "max": 12470
+      },
+      "balance": {
+        "current": 1274456.85,
+        "min": -1221593.65,
+        "max": 2246141.85
+      },
+      "pnl": {
+        "current": -4168.65,
+        "min": -5447.55,
+        "max": 1170.0
+      },
+      "trades": 2212,
+      "timestamp": "20150424_162234",
+      "duration_ms": 3149
     },
-    "pnl": {
-      "current": 2790.55,
-      "min": -5221.5,
-      "max": 4255.25
+    "resultGraphs": ["pnl", "position"]
+  },
+  "20150424_162306": {
+    "input": {
+      "parameters": {
+        "orderSize": 1100,
+        "maxPositionSize": 10000,
+        "liquidationRatio": 4
+      },
+      "username": "default_user",
+      "strategy": "simplest_bidask_price_linear_order_sizing_with_liquidation_2"
     },
-    "trades": 1902,
-    "timestamp": "20150418_101759",
-    "duration_ms": 4604
+    "result": {
+      "position": {
+        "current": 4395,
+        "min": -14705,
+        "max": 24795
+      },
+      "balance": {
+        "current": -421873.4,
+        "min": -2426563.4,
+        "max": 1438756.65
+      },
+      "pnl": {
+        "current": 9715.6,
+        "min": -5331.65,
+        "max": 9715.6
+      },
+      "trades": 1489,
+      "timestamp": "20150424_162306",
+      "duration_ms": 1169
+    },
+    "resultGraphs": ["pnl", "position"]
+  },
+  "20150424_162246": {
+    "input": {
+      "parameters": {
+        "orderSize": 800,
+        "maxPositionSize": 10000,
+        "liquidationRatio": 4
+      },
+      "username": "default_user",
+      "strategy": "simplest_bidask_price_linear_order_sizing_with_liquidation_2"
+    },
+    "result": {
+      "position": {
+        "current": -28253,
+        "min": -37053,
+        "max": 12435
+      },
+      "balance": {
+        "current": 2771137.9,
+        "min": -1218217.3,
+        "max": 3634857.9
+      },
+      "pnl": {
+        "current": -4719.35,
+        "min": -6952.6,
+        "max": 1240.0
+      },
+      "trades": 2201,
+      "timestamp": "20150424_162246",
+      "duration_ms": 1396
+    },
+    "resultGraphs": ["pnl", "position"]
   }
-}]
+}
