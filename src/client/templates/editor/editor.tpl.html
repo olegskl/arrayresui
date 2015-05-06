@@ -43,12 +43,30 @@ object pingpong extends Application {
   User enters the strategy code in the editor on the left and clicks the submit button.
   <br><br>
   Results are then displayed here as graphs, tables, ...
-  <br><br><br>
-  Here's a sample response from api/assets:
-  <br>
-  <pre>{{ appOutput.assets }}</pre>
+  <br><br>
 
-  Here's a sample response from api/strategies:
-  <br>
-  <pre>{{ appOutput.strategies }}</pre>
+  <h2>api/assets</h2>
+
+  <table>
+    <tr ng-repeat="asset in appOutput.assets">
+      <td>{{ asset.market }}</td>
+      <td>{{ asset.currency }}</td>
+      <td>{{ asset.asset }}</td>
+      <td>{{ asset.ticker }}</td>
+      <td>{{ asset.availableDates }}</td>
+    </tr>
+  </table>
+
+  <h2>api/strategies</h2>
+
+  <table>
+    <tr ng-repeat="strategy in appOutput.strategies">
+      <td>{{ strategy.name }}</td>
+      <td>{{ strategy.parameters.orderSize.type }}</td>
+      <td>{{ strategy.parameters.orderSize.value }}</td>
+      <td>{{ strategy.parameters.maxPositionSize.type }}</td>
+      <td>{{ strategy.parameters.maxPositionSize.value }}</td>
+    </tr>
+  </table>
+
 </section>
