@@ -2,6 +2,68 @@
  == Code editor
  ==================== -->
 <section class="app-input">
+
+  <header class="app-input__header">
+
+    <div class="app-input__control-group">
+
+      <label
+       for="marketSelector">
+        Market
+      </label>
+      <select
+       id="marketSelector"
+       ng-model="appOutput.simulationProps.MIC"
+       ng-options="market for market in appOutput.getMarkets()">
+        <option value="">-- market --</option>
+      </select>
+
+      <label
+       for="currencySelector">
+        Currency
+      </label>
+      <select
+       id="currencySelector"
+       ng-model="appOutput.simulationProps.CCY"
+       ng-options="currency for currency in appOutput.getCurrencies(appOutput.simulationProps)"
+       ng-disabled="!appOutput.simulationProps.MIC">
+        <option value="">-- currency --</option>
+      </select>
+
+      <label
+       for="tickerSelector">
+        Ticker
+      </label>
+      <select
+       id="tickerSelector"
+       ng-model="appOutput.simulationProps.ISIN"
+       ng-options="ticker for ticker in appOutput.getTickers(appOutput.simulationProps)"
+       ng-disabled="!appOutput.simulationProps.CCY">
+        <option value="">-- ticker --</option>
+      </select>
+
+      <label
+       for="dateSelector">
+        Time frame
+      </label>
+      <select
+       id="dateSelector"
+       ng-model="appOutput.simulationProps.date"
+       ng-options="date for date in appOutput.getDates(appOutput.simulationProps)"
+       ng-disabled="!appOutput.simulationProps.ISIN">
+        <option value="">-- time frame --</option>
+      </select>
+
+    </div>
+
+    <button
+     class="app-input__submit"
+     ng-click="appOutput.runSimulation(appOutput.simulationProps)"ng-disabled="!appOutput.simulationProps.date">
+      Run simulation
+    </button>
+
+  </header>
+
   <pre class="app-input__editor" app-editor>
 // This scrollable area is the code editor with syntax highlighting for Scala.
 
@@ -31,7 +93,6 @@ object pingpong extends Application {
   ping ! Start
 }
   </pre>
-  <button class="app-input__submit">Submit strategy</button>
 </section>
 
 <!--
@@ -43,30 +104,4 @@ object pingpong extends Application {
   User enters the strategy code in the editor on the left and clicks the submit button.
   <br><br>
   Results are then displayed here as graphs, tables, ...
-  <br><br>
-
-  <h2>api/assets</h2>
-
-  <table>
-    <tr ng-repeat="asset in appOutput.assets">
-      <td>{{ asset.market }}</td>
-      <td>{{ asset.currency }}</td>
-      <td>{{ asset.asset }}</td>
-      <td>{{ asset.ticker }}</td>
-      <td>{{ asset.availableDates }}</td>
-    </tr>
-  </table>
-
-  <h2>api/strategies</h2>
-
-  <table>
-    <tr ng-repeat="strategy in appOutput.strategies">
-      <td>{{ strategy.name }}</td>
-      <td>{{ strategy.parameters.orderSize.type }}</td>
-      <td>{{ strategy.parameters.orderSize.value }}</td>
-      <td>{{ strategy.parameters.maxPositionSize.type }}</td>
-      <td>{{ strategy.parameters.maxPositionSize.value }}</td>
-    </tr>
-  </table>
-
 </section>

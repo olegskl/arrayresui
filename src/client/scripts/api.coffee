@@ -1,13 +1,12 @@
 'use strict'
 
-angular
-  .module 'ArrayResUi'
+angular.module 'ArrayResUi'
 
   .config (RestangularProvider) ->
     RestangularProvider.setBaseUrl '/api'
 
-  .factory 'Assets', (Restangular) ->
+  .service 'Assets', (Restangular) ->
     Restangular.service 'assets'
 
-  .factory 'Strategies', (Restangular) ->
+  .service 'Strategies', (Restangular) ->
     Restangular.service 'strategies'
