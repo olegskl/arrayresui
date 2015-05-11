@@ -31,7 +31,6 @@
   "dependencies": {
     "compression": "^1.2.1",
     "express": "^4.10.4",
-    "lodash": "^3.8.0",
     "serve-static": "^1.7.1"
   }
 }
