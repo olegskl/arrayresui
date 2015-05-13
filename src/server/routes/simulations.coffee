@@ -6,4 +6,6 @@ sendJSONFile = require '../utils/sendJSONFile'
 source = "#{__dirname}/../mockResponses/simulations/reply.json"
 
 module.exports = (do express.Router)
-  .use '/', sendJSONFile source
+  .get '/', sendJSONFile source
+  .post '/', (request, response) ->
+    response.send 'new simulation created from ' + JSON.stringify request.body

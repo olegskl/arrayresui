@@ -26,7 +26,7 @@ angular.module 'ArrayResUi', [
     # Private
     # --------------------
 
-    # makeSelector :: String, Array -> Criteria -> [Asset] -> [Asset]
+    # makeSelector :: String, Array -> (Criteria -> [Asset] -> [Asset])
     makeSelector = (idPropertyName, criteriaPropertyNameList) ->
       # unique :: [Object] -> [Object]
       unique = R.uniqWith R.eqProps idPropertyName
@@ -34,15 +34,15 @@ angular.module 'ArrayResUi', [
       criteriaMatcher = R.compose R.where, R.pick criteriaPropertyNameList
       # filter :: Object -> [Object] -> [Object]
       filter = R.useWith R.filter, criteriaMatcher, R.identity
-      # selector :: Object -> [Object] -> [String]
+      # selector :: Object -> [Object] -> [Object]
       selector = R.compose unique, filter
 
     # Constructor
     # --------------------
 
-    constructor: (Assets, Strategies) ->
-      @assets = Assets.getList().$object
-      @strategies = Strategies.getList().$object
+    constructor: (@Assets, @Strategies, @Simulations) ->
+      @assetList = @Assets.getList().$object
+      @strategyList = @Strategies.getList().$object
 
       @simulationProps = {}
       ['MIC', 'CCY', 'ISIN', 'date'].forEach (key, i, arr) =>
@@ -68,12 +68,15 @@ angular.module 'ArrayResUi', [
     # selectDates :: Criteria -> [Asset] -> [Asset]
     selectDates: makeSelector 'date', ['MIC', 'CCY', 'ISIN']
 
-    # runSimulation :: Criteria -> undefined
-    runSimulation: (criteria) ->
-      searchFn = R.where R.pick ['MIC', 'CCY', 'ISIN', 'date'], criteria
-      sim = R.find searchFn, @assets
-      console.log "submitted simulation #{sim.id}"
-      console.log " - strategy id is #{@simulationProps.strategyId}"
+    # selectAssets :: Criteria -> [Asset] -> [Asset]
+    selectAssets: makeSelector 'id', ['MIC', 'CCY', 'ISIN', 'date']
+
+    # runSimulation :: Criteria, [Asset] -> Promise
+    runSimulation: (criteria, assets) ->
+      @Simulations
+        .post R.head @selectAssets criteria, assets
+        .then (response) -> console.log "received response \"#{response}\""
+        .catch (error) -> console.error "caught an error #{error}"
 
   .directive 'appEditor', ($window) ->
     restrict: 'EA'

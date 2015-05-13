@@ -10,3 +10,6 @@ angular.module 'ArrayResUi'
 
   .service 'Strategies', (Restangular) ->
     Restangular.service 'strategies'
+
+  .service 'Simulations', (Restangular) ->
+    Restangular.service 'simulations'
