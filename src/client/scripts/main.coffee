@@ -20,10 +20,25 @@ angular.module 'ArrayResUi', [
 
   .controller 'OutputCtrl', class OutputCtrl
 
-    # Sorts elements in ascending order:
-    sortAsc = R.sort R.comparator (a, b) -> a < b
-    # Applies sort to unique values:
-    uniqueSorted = R.compose sortAsc, R.uniq
+    # data Criteria = Object
+    # data Asset = Object
+
+    # Private
+    # --------------------
+
+    # makeSelector :: String, Array -> Criteria -> [Asset] -> [Asset]
+    makeSelector = (idPropertyName, criteriaPropertyNameList) ->
+      # unique :: [Object] -> [Object]
+      unique = R.uniqWith R.eqProps idPropertyName
+      # criteriaMatcher :: Object -> Object
+      criteriaMatcher = R.compose R.where, R.pick criteriaPropertyNameList
+      # filter :: Object -> [Object] -> [Object]
+      filter = R.useWith R.filter, criteriaMatcher, R.identity
+      # selector :: Object -> [Object] -> [String]
+      selector = R.compose unique, filter
+
+    # Constructor
+    # --------------------
 
     constructor: (Assets, Strategies) ->
       @assets = Assets.getList().$object
@@ -38,34 +53,22 @@ angular.module 'ArrayResUi', [
             @simulationProps["_#{key}"] = v
             @simulationProps[arr[i + 1]] = null if not v and i + 1 < arr.length
 
-    # Markets
+    # Public
     # --------------------
-    marketsAccessor = R.compose uniqueSorted, R.pluck 'MIC'
-    getMarkets: -> marketsAccessor @assets
 
-    # Currencies
-    # --------------------
-    currenciesAccessor = R.compose uniqueSorted, R.pluck 'CCY'
-    getCurrencies: (criteria) ->
-      filter = R.filter R.where R.pick 'MIC', criteria
-      currenciesAccessor filter @assets
+    # selectMarkets :: Criteria -> [Asset] -> [Asset]
+    selectMarkets: makeSelector 'MIC', []
 
-    # Tickers
-    # --------------------
-    tickersAccessor = R.compose uniqueSorted, R.pluck 'ISIN'
-    getTickers: (criteria) ->
-      filter = R.filter R.where R.pick ['MIC', 'CCY'], criteria
-      tickersAccessor filter @assets
+    # selectCurrencies :: Criteria -> [Asset] -> [Asset]
+    selectCurrencies: makeSelector 'CCY', ['MIC']
 
-    # Dates
-    # --------------------
-    dateAccessor = R.compose uniqueSorted, R.pluck 'date'
-    getDates: (criteria) ->
-      filter = R.filter R.where R.pick ['MIC', 'CCY', 'ISIN'], criteria
-      dateAccessor filter @assets
+    # selectTickers :: Criteria -> [Asset] -> [Asset]
+    selectTickers: makeSelector 'ISIN', ['MIC', 'CCY']
 
-    # Simulation runner
-    # --------------------
+    # selectDates :: Criteria -> [Asset] -> [Asset]
+    selectDates: makeSelector 'date', ['MIC', 'CCY', 'ISIN']
+
+    # runSimulation :: Criteria -> undefined
     runSimulation: (criteria) ->
       searchFn = R.where R.pick ['MIC', 'CCY', 'ISIN', 'date'], criteria
       sim = R.find searchFn, @assets

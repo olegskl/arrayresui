@@ -14,7 +14,7 @@
       <select
        id="marketSelector"
        ng-model="appOutput.simulationProps.MIC"
-       ng-options="market for market in appOutput.getMarkets()">
+       ng-options="asset.MIC as asset.MIC for asset in appOutput.selectMarkets(appOutput.simulationProps, appOutput.assets) | orderBy:'MIC'">
         <option value="">-- market --</option>
       </select>
 
@@ -25,7 +25,7 @@
       <select
        id="currencySelector"
        ng-model="appOutput.simulationProps.CCY"
-       ng-options="currency for currency in appOutput.getCurrencies(appOutput.simulationProps)"
+       ng-options="asset.CCY as asset.CCY for asset in appOutput.selectCurrencies(appOutput.simulationProps, appOutput.assets) | orderBy:'CCY'"
        ng-disabled="!appOutput.simulationProps.MIC">
         <option value="">-- currency --</option>
       </select>
@@ -37,7 +37,7 @@
       <select
        id="tickerSelector"
        ng-model="appOutput.simulationProps.ISIN"
-       ng-options="ticker for ticker in appOutput.getTickers(appOutput.simulationProps)"
+       ng-options="asset.ISIN as asset.ticker for asset in appOutput.selectTickers(appOutput.simulationProps, appOutput.assets) | orderBy:'ISIN'"
        ng-disabled="!appOutput.simulationProps.CCY">
         <option value="">-- ticker --</option>
       </select>
@@ -49,7 +49,7 @@
       <select
        id="dateSelector"
        ng-model="appOutput.simulationProps.date"
-       ng-options="date for date in appOutput.getDates(appOutput.simulationProps)"
+       ng-options="asset.date as asset.date for asset in appOutput.selectDates(appOutput.simulationProps, appOutput.assets) | orderBy:'date'"
        ng-disabled="!appOutput.simulationProps.ISIN">
         <option value="">-- time frame --</option>
       </select>
@@ -58,7 +58,8 @@
 
     <button
      class="app-input__submit"
-     ng-click="appOutput.runSimulation(appOutput.simulationProps)"ng-disabled="!appOutput.simulationProps.date">
+     ng-click="appOutput.runSimulation(appOutput.simulationProps)"
+     ng-disabled="!appOutput.simulationProps.date">
       Run simulation
     </button>
 
