@@ -73,6 +73,7 @@ angular.module 'ArrayResUi', [
       searchFn = R.where R.pick ['MIC', 'CCY', 'ISIN', 'date'], criteria
       sim = R.find searchFn, @assets
       console.log "submitted simulation #{sim.id}"
+      console.log " - strategy id is #{@simulationProps.strategyId}"
 
   .directive 'appEditor', ($window) ->
     restrict: 'EA'

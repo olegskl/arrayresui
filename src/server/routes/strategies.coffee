@@ -6,11 +6,10 @@ sendJSONFile = require '../utils/sendJSONFile'
 source = "#{__dirname}/../mockResponses/strategies/reply.json"
 
 transformer = (obj) ->
-  Object
-    .keys obj
-    .map (key) ->
-      name: key,
-      parameters: obj[key].parameters
+  for key, val of obj
+    id: key
+    name: key # TODO: replace this real name when available
+    parameters: val.parameters
 
 module.exports = (do express.Router)
   .use '/', sendJSONFile source, transformer
