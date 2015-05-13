@@ -8,6 +8,17 @@
     <div class="app-input__control-group">
 
       <label
+       for="strategySelector">
+        Strategy
+      </label>
+      <select
+       id="strategySelector"
+       ng-model="appOutput.simulationProps.strategyId"
+       ng-options="strategy.id as strategy.name for strategy in appOutput.strategies | orderBy:'name'">
+        <option value="">-- strategy --</option>
+      </select>
+
+      <label
        for="marketSelector">
         Market
       </label>
