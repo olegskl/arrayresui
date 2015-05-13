@@ -37,7 +37,7 @@
       <select
        id="tickerSelector"
        ng-model="appOutput.simulationProps.ISIN"
-       ng-options="asset.ISIN as asset.ISIN for asset in appOutput.selectTickers(appOutput.simulationProps, appOutput.assets) | orderBy:'ISIN'"
+       ng-options="asset.ISIN as asset.ticker for asset in appOutput.selectTickers(appOutput.simulationProps, appOutput.assets) | orderBy:'ISIN'"
        ng-disabled="!appOutput.simulationProps.CCY">
         <option value="">-- ticker --</option>
       </select>

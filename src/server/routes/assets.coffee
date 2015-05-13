@@ -9,7 +9,7 @@ transformer = (obj) ->
     MIC: val.MIC
     CCY: val.CCY
     ISIN: val.ISIN
-    ticker: val.ticker
+    ticker: "#{val.ISIN} ticker" # TODO: replace this real ticker when available
     date: val.Date
 
 source = "#{__dirname}/../mockResponses/assets/reply.json"
