@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="ArrayResUi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -11,54 +11,15 @@
   <!-- inject:css -->
   <!-- endinject -->
 
+</head>
+<body class="app-container">
+
+  <div id="app" class="app-container"></div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.9/ace.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0-rc.0/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.13.0/ramda.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.7.0/lodash.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.min.js"></script>
 
   <!-- inject:js -->
   <!-- endinject -->
-
-</head>
-<body class="app-layout">
-
-  <!--
-   == Application navigation
-   ==================== -->
-  <nav class="app-nav">
-    <div class="app-nav__logo">
-      ArrayResUi
-    </div>
-    <div class="app-nav__item-list">
-      <a
-       ui-sref="editor"
-       ui-sref-active="app-nav__item--active"
-       class="app-nav__item">
-        Strategy editor
-      </a>
-      <a
-       ui-sref="about"
-       ui-sref-active="app-nav__item--active"
-       class="app-nav__item">
-        About
-      </a>
-    </div>
-    <div class="app-nav__legal">
-      Copyright and legal information goes here as well as contact details if necessary.
-    </div>
-  </nav>
-
-  <!--
-   == Main
-   ==================== -->
-  <section
-   ui-view
-   class="app-main">
-  </section>
 
 </body>
 </html>
