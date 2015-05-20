@@ -92,7 +92,8 @@ module.exports = React.createClass
   isTickerSelectorDisabled: -> if @state.CCY then no else yes
   isDateSelectorDisabled: -> if @state.ISIN then no else yes
 
-  isSimulationRunnerDisabled: -> if @state.date then no else yes
+  isSimulationRunnerDisabled: ->
+    if @state.date and @state.strategyId then no else yes
 
   handleStrategyChange: (value) ->
     @setState strategyId: value
