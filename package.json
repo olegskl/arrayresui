@@ -34,7 +34,9 @@
   "dependencies": {
     "body-parser": "^1.12.4",
     "compression": "^1.2.1",
+    "event-emitter": "^0.3.3",
     "express": "^4.10.4",
+    "promise": "^7.0.1",
     "ramda": "^0.14.0",
     "react": "^0.13.3",
     "react-router": "^0.13.3",
