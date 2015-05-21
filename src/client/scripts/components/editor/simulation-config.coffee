@@ -6,6 +6,7 @@ R = require 'ramda'
 React = require 'react'
 
 Selector = require './selector'
+dispatcher = require '../../dispatcher'
 
 # Private
 # --------------------
@@ -114,20 +115,10 @@ module.exports = React.createClass
     @setState date: value
 
   runSimulation: ->
-
-    options =
-      method: 'post'
-      headers:
-        'Accept': 'application/json'
-        'Content-Type': 'application/json'
-      body: JSON.stringify
-        asset: findAsset @state, @props.assets
-        strategy: findStrategy {id: @state.strategyId}, @props.strategies
-
-    fetch '/api/simulations/', options
-      .then (response) -> do response.json
-      .then (response) -> console.log "received response", response
-      .catch (error) -> console.error "caught an error", error
+    simulationProps =
+      asset: findAsset @state, @props.assets
+      strategy: findStrategy {id: @state.strategyId}, @props.strategies
+    dispatcher.emit 'simulation', simulationProps
 
   render: ->
 

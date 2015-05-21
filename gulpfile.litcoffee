@@ -53,15 +53,14 @@ Source files and folders
     source.clientIndex = "#{source.client}/index.html"
     source.clientFavicon = "#{source.client}/favicon.ico"
     source.clientScriptMain = "#{source.client}/scripts/main.coffee"
-    # source.clientScripts = [
-    #   "#{source.client}/scripts/**/*.*coffee"
-    #   "#{source.client}/scripts/**/*.cjsx"
-    # ]
     source.clientStyles = "#{source.client}/styles/main.*"
 
     source.server = 'src/server'
     source.serverScripts = "#{source.server}/**/*.*coffee"
-    source.serverData = "#{source.server}/**/*.json"
+    source.serverData = [
+      "#{source.server}/**/*.json"
+      "#{source.server}/**/*.csv"
+    ]
 
 
 Destination files and folders
@@ -183,7 +182,6 @@ Not supposed to be used directly. Use `gulp dist` instead.
         .pipe inject scripts, transform: transform.scripts
         .pipe do minifyHTML
         .pipe gulp.dest destination.client
-        .pipe browserSync.reload stream: true
 
 
 Clean distribution build task
@@ -245,9 +243,9 @@ Watch task for development build
 Watch task for distribution build
 --------------------------------------------------------------------------------
 
-    gulp.task 'watch-dist', ['browser-sync'], ->
-      gulp
-        .watch 'src/**/*', ['dist']
+    # gulp.task 'watch-dist', ->
+    #   gulp
+    #     .watch 'src/**/*', ['dist']
 
 
 Serve task for development build
@@ -262,7 +260,7 @@ Serve task for distribution build
 Do not use for production. This is just to check if the app compiles.
 
     gulp.task 'serve-dist', (cb) ->
-      sequence 'dist', 'watch-dist', cb
+      sequence 'dist', cb
 
 
 Default task

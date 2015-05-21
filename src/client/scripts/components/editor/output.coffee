@@ -1,7 +1,15 @@
 React = require 'react'
 
+simulations = require '../../observables/simulations'
+graphs = require '../../observables/graphs'
+
 # Simulation results
 module.exports = React.createClass
+
+  componentDidMount: ->
+    simulations.subscribe (data) -> console.log 'got simulation:', data
+    graphs.subscribe (data) -> console.log 'got graphs:', data
+
   render: ->
     <section className="app-output">
       This area is the visualization interface.

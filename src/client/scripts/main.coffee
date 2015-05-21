@@ -1,3 +1,6 @@
+global.Promise = require 'promise'
+require 'whatwg-fetch'
+
 React = require 'react'
 Router = require 'react-router'
 
