@@ -1,20 +1,45 @@
 React = require 'react'
 
+OutputResult = require './output-result'
+OutputGraphPnL = require './output-graph-pnl'
+OutputGraphPosition = require './output-graph-position'
+
 simulations = require '../../observables/simulations'
 graphs = require '../../observables/graphs'
 
 # Simulation results
 module.exports = React.createClass
 
+  getInitialState: ->
+    simulation: {}
+    graphPnL: []
+    graphPosition: []
+
+  updateSimulation: (data) ->
+    console.info 'got simulation:', data
+    @setState simulation: data
+
+  updatePnLGraph: (data) ->
+    console.info 'got pnl graph:', data
+    @setState graphPnL: data
+
+  updatePositionGraph: (data) ->
+    console.info 'got position graph:', data
+    @setState graphPosition: data
+
   componentDidMount: ->
-    simulations.subscribe (data) -> console.log 'got simulation:', data
-    graphs.subscribe (data) -> console.log 'got graphs:', data
+    @simulationSubscription = simulations.forEach @updateSimulation
+    @pnlGraphSubscription = graphs.pnl.forEach @updatePnLGraph
+    @positionGraphSubscription = graphs.position.forEach @updatePositionGraph
+
+  componentWillUnmount: ->
+    do @simulationSubscription.dispose
+    do @pnlGraphSubscription.dispose
+    do @positionGraphSubscription.dispose
 
   render: ->
     <section className="app-output">
-      This area is the visualization interface.
-      <br/><br/>
-      User enters the strategy code in the editor on the left and clicks the submit button.
-      <br/><br/>
-      Results are then displayed here as graphs, tables, ...
+      <OutputResult value={@state.simulation.response}/>
+      <OutputGraphPnL data={@state.graphPnL}/>
+      <OutputGraphPosition data={@state.graphPosition}/>
     </section>

@@ -1,9 +1,7 @@
-Promise = require 'promise'
 d3 = require 'd3'
+Promise = require 'promise'
 
 simulations = require './simulations'
-
-tsv = Promise.denodeify d3.tsv
 
 generateRequestDataList = (response) ->
   response.response.resultGraphs.map (graphName) ->
@@ -12,12 +10,19 @@ generateRequestDataList = (response) ->
     strategyId: response.request.strategy.id
     simulationId: response.response.id
 
-module.exports = simulations
-  .flatMap (response) ->
+tsv = Promise.denodeify d3.tsv
 
-    requests = generateRequestDataList response
-      .map (requestData) ->
-        { graphName, assetId, strategyId, simulationId } = requestData
-        tsv "/api/graphs/#{graphName}/#{assetId}/#{strategyId}/#{simulationId}"
+request = (requestData) ->
+  { graphName, assetId, strategyId, simulationId } = requestData
+  tsv "/api/graphs/#{graphName}/#{assetId}/#{strategyId}/#{simulationId}"
 
-    Promise.all requests
+sims = simulations
+  .flatMap generateRequestDataList
+
+exports.pnl = sims
+  .filter (x) -> x.graphName is 'pnl'
+  .flatMap request
+
+exports.position = sims
+  .filter (x) -> x.graphName is 'position'
+  .flatMap request

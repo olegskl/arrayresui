@@ -85,7 +85,12 @@ module.exports = React.createClass
     assets: []
     strategies: []
 
-  getInitialState: -> {}
+  getInitialState: ->
+    strategyId: 'strategy_12'
+    MIC: 'MIC0'
+    CCY: 'CCY0'
+    ISIN: 'ISIN0'
+    date: '05-07'
 
   isStrategySelectorDisabled: -> no # always enabled
   isMarketSelectorDisabled: -> no # always enabled

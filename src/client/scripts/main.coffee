@@ -1,3 +1,4 @@
+# Polyfills:
 global.Promise = require 'promise'
 require 'whatwg-fetch'
 

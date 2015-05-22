@@ -15,11 +15,15 @@ module.exports = React.createClass
   componentDidMount: ->
     editor = ace.edit do @refs.codeEditor.getDOMNode
     editor.setTheme 'ace/theme/merbivore_soft'
-    editor.getSession().setMode 'ace/mode/scala'
+    editor.$blockScrolling = Infinity
+
+    session = editor.getSession()
+    session.setMode 'ace/mode/scala'
+    session.setValue @props.code
+    session.on 'change', -> console.log do editor.getValue
 
   render: ->
     <pre
      ref="codeEditor"
      className="app-input__editor">
-      {@props.code}
     </pre>
