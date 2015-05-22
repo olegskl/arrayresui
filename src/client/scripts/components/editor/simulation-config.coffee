@@ -86,7 +86,7 @@ module.exports = React.createClass
     strategies: []
 
   getInitialState: ->
-    strategyId: 'strategy_12'
+    strategyId: 'strategy_22'
     MIC: 'MIC0'
     CCY: 'CCY0'
     ISIN: 'ISIN0'
