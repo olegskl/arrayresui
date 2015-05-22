@@ -1,0 +1,33 @@
+{
+  "20150510_085338": {
+    "input": {
+      "parameters": {
+        "maxPositionSize": 10000,
+        "orderSize": 1000
+      },
+      "strategy": "simplest_bidask_price_linear_order_sizing"
+    },
+    "result": {
+      "id": "20150510_085338",
+      "position": {
+        "current": -21229,
+        "min": -21229,
+        "max": 343
+      },
+      "balance": {
+        "current": 2.6157259E+8,
+        "min": -4187970.0,
+        "max": 2.6157259E+8
+      },
+      "pnl": {
+        "current": -2303880.0,
+        "min": -2303880.0,
+        "max": 6920.0
+      },
+      "trades": 3655,
+      "timestamp": "20150510_085344",
+      "duration_ms": 721
+    },
+    "resultGraphs": ["pnl", "position"]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "20150510_085306": {
+    "input": {
+      "parameters": {
+        "seed": 1337,
+        "orderSize": 100
+      },
+      "strategy": "zero_intelligence"
+    },
+    "result": {
+      "id": "20150510_085306",
+      "position": {
+        "current": 6271,
+        "min": -500,
+        "max": 6371
+      },
+      "balance": {
+        "current": -104274.14,
+        "min": -105942.14,
+        "max": 8192.0
+      },
+      "pnl": {
+        "current": 263.43,
+        "min": -127.75,
+        "max": 465.5
+      },
+      "trades": 625,
+      "timestamp": "20150510_085310",
+      "duration_ms": 1401
+    },
+    "resultGraphs": ["pnl", "position"]
+  }
+}

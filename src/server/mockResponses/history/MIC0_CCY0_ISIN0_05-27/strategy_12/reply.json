@@ -1,0 +1,95 @@
+{
+  "20150510_161949": {
+    "input": {
+      "parameters": {
+        "orderSize": 1000,
+        "maxPositionSize": 10000
+      },
+      "strategy": "simplest_bidask_price_linear_order_sizing"
+    },
+    "result": {
+      "id": "20150510_161949",
+      "position": {
+        "current": -11528,
+        "min": -11528,
+        "max": 0
+      },
+      "balance": {
+        "current": 1.5448894E+8,
+        "min": 0.0,
+        "max": 1.5448894E+8
+      },
+      "pnl": {
+        "current": -447380.0,
+        "min": -452800.0,
+        "max": 100.0
+      },
+      "trades": 3651,
+      "timestamp": "20150510_161949",
+      "duration_ms": 318
+    },
+    "resultGraphs": ["pnl", "position"]
+  },
+  "20150510_161532": {
+    "input": {
+      "parameters": {
+        "orderSize": 1000,
+        "maxPositionSize": 9000
+      },
+      "strategy": "simplest_bidask_price_linear_order_sizing"
+    },
+    "result": {
+      "id": "20150510_161532",
+      "position": {
+        "current": -11528,
+        "min": -11528,
+        "max": 0
+      },
+      "balance": {
+        "current": 1.5448894E+8,
+        "min": 0.0,
+        "max": 1.5448894E+8
+      },
+      "pnl": {
+        "current": -447380.0,
+        "min": -452800.0,
+        "max": 100.0
+      },
+      "trades": 3651,
+      "timestamp": "20150510_161532",
+      "duration_ms": 553
+    },
+    "resultGraphs": ["pnl", "position"]
+  },
+  "20150510_161728": {
+    "input": {
+      "parameters": {
+        "orderSize": 1000,
+        "maxPositionSize": 19000
+      },
+      "strategy": "simplest_bidask_price_linear_order_sizing"
+    },
+    "result": {
+      "id": "20150510_161728",
+      "position": {
+        "current": -11528,
+        "min": -11528,
+        "max": 0
+      },
+      "balance": {
+        "current": 1.5448894E+8,
+        "min": 0.0,
+        "max": 1.5448894E+8
+      },
+      "pnl": {
+        "current": -447380.0,
+        "min": -452800.0,
+        "max": 100.0
+      },
+      "trades": 3651,
+      "timestamp": "20150510_161728",
+      "duration_ms": 376
+    },
+    "resultGraphs": ["pnl", "position"]
+  }
+}
