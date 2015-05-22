@@ -1,0 +1,33 @@
+{
+  "20150510_085326": {
+    "input": {
+      "parameters": {
+        "spreadThreshold": 1.0,
+        "orderSize": 100
+      },
+      "strategy": "weighted_price"
+    },
+    "result": {
+      "id": "20150510_085326",
+      "position": {
+        "current": -1200,
+        "min": -1200,
+        "max": 0
+      },
+      "balance": {
+        "current": 1.6058E+7,
+        "min": 0.0,
+        "max": 1.6058E+7
+      },
+      "pnl": {
+        "current": -82000.0,
+        "min": -118000.0,
+        "max": 45750.0
+      },
+      "trades": 365,
+      "timestamp": "20150510_085327",
+      "duration_ms": 1791
+    },
+    "resultGraphs": ["pnl", "position"]
+  }
+}

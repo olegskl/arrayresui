@@ -10,6 +10,7 @@ path = require 'path'
 express = require 'express'
 compression = require 'compression'
 serveStatic = require 'serve-static'
+bodyParser = require 'body-parser'
 
 # Our modules:
 router = require './router'
@@ -29,6 +30,7 @@ compatibilityHeaders = (request, response, next) ->
 (do express)
   .use compatibilityHeaders
   .use do compression
+  .use do bodyParser.json
   .use '/api', router
   .use serveStatic staticDir, maxAge: cacheAge
   .listen port

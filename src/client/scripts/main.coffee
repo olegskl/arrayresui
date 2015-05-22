@@ -1,36 +1,22 @@
-'use strict'
+# Polyfills:
+global.Promise = require 'promise'
+require 'whatwg-fetch'
 
-angular
-  .module 'ArrayResUi', [
-    'ui.router'
-    'restangular'
-  ]
+React = require 'react'
+Router = require 'react-router'
 
-  .config ($stateProvider, $urlRouterProvider) ->
+App = require './components/app'
+About = require './components/about'
+Editor = require './components/editor'
 
-    class OutputController
-      constructor: (Assets, Strategies) ->
-        @assets = (do Assets.getList).$object
-        @strategies = (do Strategies.getList).$object
+{ Route, Redirect } = Router
 
-    $stateProvider
-      .state 'editor',
-        url: '/editor'
-        templateUrl: 'templates/editor/editor.tpl.html'
-        controller: OutputController
-        controllerAs: 'appOutput'
-      .state 'about',
-        url: '/about'
-        templateUrl: 'templates/about/about.tpl.html'
+routes =
+  <Route path="/" handler={App}>
+    <Route name="editor" path="/editor/" handler={Editor}/>
+    <Route name="about" path="/about/" handler={About}/>
+    <Redirect from="/" to="editor"/>
+  </Route>
 
-    $urlRouterProvider
-      .when '', '/editor'
-
-  .directive 'appEditor', ($window) ->
-    restrict: 'EA'
-    link: (scope, element) ->
-      editor = $window.ace.edit element[0]
-      editor.setTheme 'ace/theme/merbivore_soft'
-      editor.getSession().setMode 'ace/mode/scala'
-
-
+Router.run routes, (Handler) ->
+  React.render <Handler/>, document.querySelector '#app'

@@ -1,7 +1,7 @@
 Build system
 ================================================================================
 
-This is the build system for tbd.
+This is the build system for ArrayResUi.
 
  - Run `gulp` or `gulp serve-dev` to launch a live-reloaded site from dev build.
  - Run `gulp serve-dist` to launch a live-reloaded site from distribution build.
@@ -9,7 +9,7 @@ This is the build system for tbd.
 
 By default both *dev* and *dist* will write the generated code to the *./build*
 folder. Use `--dest` option to modify this behavior. Useful when deploying to
-the production environment, e.g. `gulp dist --dest="/srv/tbd"`.
+the production environment, e.g. `gulp dist --dest="/srv/arrayresui"`.
 
     'use strict'
 
@@ -19,6 +19,12 @@ Dependencies
 
     argv = (require 'minimist') process.argv[2..]
 
+    browserify = require 'browserify'
+    coffeeReactify = require 'coffee-reactify'
+    sourceStream = require 'vinyl-source-stream'
+    buffer = require 'vinyl-buffer'
+    gutil = require 'gulp-util'
+
     gulp = require 'gulp'
     merge = require 'gulp-merge'
     sequence = require 'run-sequence'
@@ -26,11 +32,8 @@ Dependencies
     coffee = require 'gulp-coffee'
     inject = require 'gulp-inject'
     concat = require 'gulp-concat'
-    angularFilesort = require 'gulp-angular-filesort'
     stylus = require 'gulp-stylus'
     autoprefixer = require 'gulp-autoprefixer'
-    ngAnnotate = require 'gulp-ng-annotate'
-    templateCache = require 'gulp-angular-templatecache'
     minifyJS = require 'gulp-uglify'
     minifyCSS = require 'gulp-minify-css'
     minifyHTML = require 'gulp-minify-html'
@@ -49,13 +52,15 @@ Source files and folders
     source.client = 'src/client'
     source.clientIndex = "#{source.client}/index.html"
     source.clientFavicon = "#{source.client}/favicon.ico"
-    source.clientScripts = "#{source.client}/scripts/**/*.*coffee"
-    source.clientTemplates = "#{source.client}/templates/**/*.tpl.html"
+    source.clientScriptMain = "#{source.client}/scripts/main.coffee"
     source.clientStyles = "#{source.client}/styles/main.*"
 
     source.server = 'src/server'
     source.serverScripts = "#{source.server}/**/*.*coffee"
-    source.serverData = "#{source.server}/**/*.json"
+    source.serverData = [
+      "#{source.server}/**/*.json"
+      "#{source.server}/**/*.csv"
+    ]
 
 
 Destination files and folders
@@ -67,7 +72,6 @@ Destination files and folders
     destination.server = "#{destination.build}/server"
     destination.client = "#{destination.server}/static"
     destination.clientScripts = "#{destination.client}/scripts"
-    destination.clientTemplates = "#{destination.client}/templates"
     destination.clientStyles = "#{destination.client}/styles"
 
 
@@ -143,6 +147,21 @@ Server script task
         .src source.serverScripts
         .pipe coffee bare: true # decoffeify without IIFE wrappers
         .pipe gulp.dest destination.server # write to disk
+
+
+Running server script task
+--------------------------------------------------------------------------------
+
+    gulp.task 'server-running', ->
+
+      gulp
+        .src source.serverData
+        .pipe gulp.dest destination.server
+
+      gulp
+        .src source.serverScripts
+        .pipe coffee bare: true # decoffeify without IIFE wrappers
+        .pipe gulp.dest destination.server # write to disk
         .pipe server serverOptions # restart the server
 
 
@@ -152,21 +171,15 @@ Not supposed to be used directly. Use `gulp dist` instead.
 
     gulp.task 'build-dist', ['favicon'], ->
 
-      templates = gulp
-        .src source.clientTemplates
-        .pipe templateCache
-          root: 'templates'
-          module: 'ArrayResUi'
+      bundler = browserify
+        entries: source.clientScriptMain
+        extensions: ['.coffee', '.cjsx']
+        transform: [coffeeReactify]
 
-      scripts = gulp
-        .src source.clientScripts
-        .pipe coffee bare: false # decoffeify with IIFE wrappers
-
-      scriptsAndTemplates = merge scripts
-        .add templates
-        .pipe do angularFilesort
-        .pipe do ngAnnotate
-        .pipe concat 'all.js'
+      scripts = bundler
+        .bundle()
+        .pipe sourceStream 'app.js'
+        .pipe do buffer
         .pipe do minifyJS
 
       styles = gulp
@@ -181,10 +194,9 @@ Not supposed to be used directly. Use `gulp dist` instead.
       gulp
         .src source.clientIndex
         .pipe inject styles, transform: transform.styles
-        .pipe inject scriptsAndTemplates, transform: transform.scripts
+        .pipe inject scripts, transform: transform.scripts
         .pipe do minifyHTML
         .pipe gulp.dest destination.client
-        .pipe browserSync.reload stream: true
 
 
 Clean distribution build task
@@ -200,14 +212,16 @@ Not supposed to be used directly. Use `gulp dev` instead.
 
     gulp.task 'build-dev', ['favicon'], ->
 
-      gulp
-        .src source.clientTemplates
-        .pipe gulp.dest destination.clientTemplates
+      bundler = browserify
+        entries: source.clientScriptMain
+        extensions: ['.coffee', '.cjsx']
+        transform: [coffeeReactify]
 
-      scripts = gulp
-        .src source.clientScripts
-        .pipe coffee bare: false # decoffeify with IIFE wrappers
-        .pipe do angularFilesort
+      scripts = bundler
+        .bundle()
+        .pipe sourceStream 'app.js'
+        .pipe do buffer
+        .on 'error', gutil.log
         .pipe gulp.dest destination.clientScripts
 
       styles = gulp
@@ -230,7 +244,7 @@ Clean development build task
 --------------------------------------------------------------------------------
 
     gulp.task 'dev', (cb) ->
-      sequence 'clean', ['package', 'server'], 'build-dev', cb
+      sequence 'clean', ['package', 'server-running'], 'build-dev', cb
 
 
 Watch task for development build
@@ -244,9 +258,9 @@ Watch task for development build
 Watch task for distribution build
 --------------------------------------------------------------------------------
 
-    gulp.task 'watch-dist', ['browser-sync'], ->
-      gulp
-        .watch 'src/**/*', ['dist']
+    # gulp.task 'watch-dist', ->
+    #   gulp
+    #     .watch 'src/**/*', ['dist']
 
 
 Serve task for development build
@@ -261,7 +275,7 @@ Serve task for distribution build
 Do not use for production. This is just to check if the app compiles.
 
     gulp.task 'serve-dist', (cb) ->
-      sequence 'dist', 'watch-dist', cb
+      sequence 'dist', cb
 
 
 Default task
