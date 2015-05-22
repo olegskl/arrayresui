@@ -6,7 +6,10 @@ module.exports = React.createClass
       return <div>Run a simulation...</div>
 
     if not @props.value.result
-      return <div>Error... probably no mock data available.</div>
+      return <div>
+        Error... probably no mock data available.<br/>
+        Try "strategy_12", "strategy_22", or "strategy_26".
+      </div>
 
     { id, trades, balance, pnl, position } = @props.value.result
 
