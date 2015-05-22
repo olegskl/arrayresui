@@ -147,6 +147,21 @@ Server script task
         .src source.serverScripts
         .pipe coffee bare: true # decoffeify without IIFE wrappers
         .pipe gulp.dest destination.server # write to disk
+
+
+Running server script task
+--------------------------------------------------------------------------------
+
+    gulp.task 'server-running', ->
+
+      gulp
+        .src source.serverData
+        .pipe gulp.dest destination.server
+
+      gulp
+        .src source.serverScripts
+        .pipe coffee bare: true # decoffeify without IIFE wrappers
+        .pipe gulp.dest destination.server # write to disk
         .pipe server serverOptions # restart the server
 
 
@@ -229,7 +244,7 @@ Clean development build task
 --------------------------------------------------------------------------------
 
     gulp.task 'dev', (cb) ->
-      sequence 'clean', ['package', 'server'], 'build-dev', cb
+      sequence 'clean', ['package', 'server-running'], 'build-dev', cb
 
 
 Watch task for development build
