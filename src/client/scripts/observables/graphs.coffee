@@ -17,6 +17,7 @@ request = (requestData) ->
   tsv "/api/graphs/#{graphName}/#{assetId}/#{strategyId}/#{simulationId}"
 
 sims = simulations
+  .filter (x) -> Array.isArray x?.response?.resultGraphs
   .flatMap generateRequestDataList
 
 exports.pnl = sims

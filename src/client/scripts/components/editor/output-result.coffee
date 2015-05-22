@@ -2,7 +2,11 @@ React = require 'react'
 
 module.exports = React.createClass
   render: ->
-    return <div>Run a simulation...</div> unless @props.value
+    if not @props.value
+      return <div>Run a simulation...</div>
+
+    if not @props.value.result
+      return <div>Error... probably no mock data available.</div>
 
     { id, trades, balance, pnl, position } = @props.value.result
 

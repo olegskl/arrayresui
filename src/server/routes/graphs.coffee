@@ -11,6 +11,12 @@ module.exports = (do express.Router)
     { graphName, assetId, strategyId, simulationId } = request.params
     fileName = "#{rootDir}#{graphName}/#{assetId}/#{strategyId}/#{simulationId}/reply.csv"
     fs.readFile fileName, 'utf8', (err, data) ->
+
+      if err
+        return response.status 500
+          .type 'text/plain'
+          .send err
+
       response
         .status 200
         .type 'text/csv'
