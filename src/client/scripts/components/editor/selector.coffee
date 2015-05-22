@@ -16,6 +16,8 @@ module.exports = React.createClass
     isDisabled: React.PropTypes.bool
     changeHandler: React.PropTypes.func.isRequired
 
+  shouldComponentUpdate: -> yes
+
   getDefaultProps: ->
     value: null
     valueList: []
@@ -25,7 +27,10 @@ module.exports = React.createClass
     @props.changeHandler event.target.value or null
 
   render: ->
+
+    value = @props.value or ''
     selectId = "#{@props.label}Selector"
+
     <div className="app-input__selector-container">
       <label
        htmlFor={selectId}
@@ -34,7 +39,7 @@ module.exports = React.createClass
       </label>
       <select
        id={selectId}
-       value={@props.value}
+       value={value}
        disabled={@props.isDisabled}
        onChange={@handleChange}
        className="app-input__selector">
