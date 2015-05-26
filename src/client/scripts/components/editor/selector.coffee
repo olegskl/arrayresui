@@ -16,8 +16,6 @@ module.exports = React.createClass
     isDisabled: React.PropTypes.bool
     changeHandler: React.PropTypes.func.isRequired
 
-  shouldComponentUpdate: -> yes
-
   getDefaultProps: ->
     value: null
     valueList: []
