@@ -15,6 +15,19 @@
   &__control-group
     flex 1
     display flex
+    justify-content space-around
+
+    label
+      display block
+
+  // .app-input__strategy-selector
+  &__strategy-selector
+    @extend .app-input__control-group
+
+  // .app-input__strategy-parameters
+  &__strategy-parameters
+    @extend .app-input__control-group
+    flex 0 0 75%
 
   // .app-input__submit
   &__submit
