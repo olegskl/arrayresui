@@ -1,3 +1,4 @@
+R = require 'ramda'
 React = require 'react'
 
 AssetsSelector = require './assets-selector'
@@ -7,7 +8,7 @@ SimulationTrigger = require './simulation-trigger'
 
 dummyUserCode = require './dummy-user-code'
 
-# Application input section:
+# AppInput
 module.exports = React.createClass
 
   getInitialState: ->
@@ -29,9 +30,9 @@ module.exports = React.createClass
     return if @state.selectedAsset is assets[0]
     @setState selectedAsset: assets[0]
 
-  setSelectedStrategies: (strategies) ->
-    return if @state.selectedStrategy is strategies[0]
-    @setState selectedStrategy: strategies[0]
+  setSelectedStrategy: (strategy) ->
+    return if R.eqDeep @state.selectedStrategy, strategy
+    @setState selectedStrategy: strategy
 
   render: ->
     <section className="app-input">
@@ -40,7 +41,7 @@ module.exports = React.createClass
        changeHandler={@setSelectedAssets}/>
       <StrategiesSelector
        strategies={@state.availableStrategies}
-       changeHandler={@setSelectedStrategies}/>
+       changeHandler={@setSelectedStrategy}/>
       <CodeEditor
        code={@state.strategyCode}/>
       <SimulationTrigger

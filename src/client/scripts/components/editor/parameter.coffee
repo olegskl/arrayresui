@@ -1,47 +1,43 @@
 React = require 'react'
 
-# createOption :: Object -> ReactElement
-createOption = (spec) ->
-  <option key={spec.value} value={spec.value}>
-    {spec.content}
-  </option>
-
-# Selector
+# Parameter
 module.exports = React.createClass
 
   propTypes:
     label: React.PropTypes.string.isRequired
+    type: React.PropTypes.string
     value: React.PropTypes.string
-    valueList: React.PropTypes.array
     isDisabled: React.PropTypes.bool
     changeHandler: React.PropTypes.func.isRequired
 
   getDefaultProps: ->
     value: null
-    valueList: []
     isDisabled: no
 
   handleChange: (event) ->
     @props.changeHandler event.target.value or null
 
+  componentDidUpdate: ->
+    @props.changeHandler @refs.input.getDOMNode().value
+
   render: ->
 
+    type = @props.type or 'text'
     value = @props.value or ''
-    selectId = "#{@props.label}Selector"
+    parameterId = "#{@props.label}Parameter"
 
     <div className="app-input__selector-container">
       <label
-       htmlFor={selectId}
+       htmlFor={parameterId}
        className="app-input__selector-label">
         {@props.label}
       </label>
-      <select
-       id={selectId}
+      <input
+       ref="input"
+       id={parameterId}
+       type={type}
        value={value}
        disabled={@props.isDisabled}
        onChange={@handleChange}
-       className="app-input__selector">
-        <option value="">- {@props.label} -</option>
-        {@props.valueList.map createOption}
-      </select>
+       className="app-input__parameter"/>
     </div>

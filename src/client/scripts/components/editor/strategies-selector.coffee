@@ -3,6 +3,7 @@
 R = require 'ramda'
 React = require 'react'
 
+StrategyParameters = require './strategy-parameters'
 Selector = require './selector'
 { makeSelector, makeFilter } = require './maker'
 
@@ -30,26 +31,43 @@ module.exports = React.createClass
 
   getInitialState: ->
     strategyId: 'strategy_22'
+    parameters: {}
 
-  handleStrategyChange: (value) ->
-    @setState strategyId: value
+  handleStrategyChange: (strategyId) ->
+    return if @state.strategyId is strategyId
+    @replaceState
+      strategyId: strategyId
+      parameters: {}
 
-  updateStrategyList: ->
-    criteria = id: @state.strategyId
-    @props.changeHandler findStrategies criteria, @props.strategies
+  handleParametersChange: (parameters) ->
+    return if R.eqDeep @state.parameters, parameters
+    @setState
+      parameters: parameters
+
+  findStrategy: (strategies) ->
+    searchCriteria = id: @state.strategyId
+    R.head findStrategies searchCriteria, strategies
 
   componentDidUpdate: ->
-    do @updateStrategyList
+    foundStrategy = R.clone @findStrategy @props.strategies
+    return if not foundStrategy
+    foundStrategy.parameters = R.clone @state.parameters
+    @props.changeHandler foundStrategy
 
   render: ->
     strategyValues = selectStrategies @props.strategies
+    foundStrategy = @findStrategy @props.strategies
+    strategyParameters = foundStrategy?.parameters
 
     <div className="app-input__header">
-      <div className="app-input__control-group">
+      <div className="app-input__strategy-selector">
         <Selector
          label="Strategy"
          value={@state.strategyId}
          valueList={strategyValues}
          changeHandler={@handleStrategyChange}/>
+        <StrategyParameters
+         parameters={strategyParameters}
+         changeHandler={@handleParametersChange}/>
       </div>
     </div>
