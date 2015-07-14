@@ -4,7 +4,6 @@ firebase = require '../shared/firebase'
 
 module.exports = React.createClass
   logout: ->
-    console.log 'unauth handler'
     do firebase.unauth
   render: ->
     <section className="app-main">
