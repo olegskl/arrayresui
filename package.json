@@ -1,7 +1,7 @@
 {
   "name": "ArrayResUi",
   "description": "ArrayResUi",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/olegskl/arrayresui.git"
@@ -38,6 +38,7 @@
     "d3": "^3.5.5",
     "event-emitter": "^0.3.3",
     "express": "^4.10.4",
+    "firebase": "^2.2.7",
     "promise": "^7.0.1",
     "ramda": "^0.14.0",
     "react": "^0.13.3",
