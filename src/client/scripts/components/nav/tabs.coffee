@@ -9,12 +9,18 @@ module.exports = React.createClass
        to="editor"
        className="app-nav__item"
        activeClassName="app-nav__item--active">
-        Strategy editor
+        Editor
       </Link>
       <Link
        to="about"
        className="app-nav__item"
        activeClassName="app-nav__item--active">
         About
+      </Link>
+      <Link
+       to="profile"
+       className="app-nav__item"
+       activeClassName="app-nav__item--active">
+        Profile
       </Link>
     </div>
