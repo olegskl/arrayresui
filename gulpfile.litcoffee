@@ -180,7 +180,7 @@ Not supposed to be used directly. Use `gulp dist` instead.
         .bundle()
         .pipe sourceStream 'app.js'
         .pipe do buffer
-        .pipe do minifyJS
+        # .pipe do minifyJS
 
       styles = gulp
         .src source.clientStyles
