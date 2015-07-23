@@ -11,14 +11,12 @@ express = require 'express'
 compression = require 'compression'
 serveStatic = require 'serve-static'
 bodyParser = require 'body-parser'
+cookieParser = require 'cookie-parser'
 
 # Our modules:
-router = require './router'
-
-# Server configuration:
-staticDir = path.resolve __dirname, process.env.STATIC_DIR or 'static'
-cacheAge = process.env.CACHE_AGE or 24 * 60 * 60 * 1000 # 24 hours
-port = process.env.PORT or 8000
+env = require './env'
+apiRouter = require './router/api-router'
+authRouter = require './router/auth-router'
 
 # Compatibility headers middleware for Internet Explorer:
 compatibilityHeaders = (request, response, next) ->
@@ -26,11 +24,29 @@ compatibilityHeaders = (request, response, next) ->
   response.setHeader 'X-UA-Compatible', 'IE=edge'
   do next
 
+# Captures and aborts non-authenticated calls:
+ensureAuthenticated = (request, response, next) ->
+  return next() if request.isAuthenticated()
+  response
+    .status 401
+    .json error: 'not authenticated'
+
+staticDir = path.resolve __dirname, env.STATIC_DIR
+staticFileServer = serveStatic staticDir, maxAge: env.CACHE_AGE
+
+# HTML5 mode middleware:
+indexFileServer = (request, response) ->
+  indexFilePath = path.resolve staticDir, 'index.html'
+  response.sendFile indexFilePath, maxAge: env.CACHE_AGE
+
 # Server:
 (do express)
   .use compatibilityHeaders
   .use do compression
+  .use do cookieParser
   .use do bodyParser.json
-  .use '/api', router
-  .use serveStatic staticDir, maxAge: cacheAge
-  .listen port
+  .use authRouter
+  .use '/api', [ensureAuthenticated, apiRouter]
+  .use staticFileServer
+  .use indexFileServer
+  .listen env.PORT

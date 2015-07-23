@@ -1,6 +1,8 @@
 R = require 'ramda'
 React = require 'react'
 
+api = require '../../modules/api'
+
 AssetsSelector = require './assets-selector'
 StrategiesSelector = require './strategies-selector'
 CodeEditor = require './code-editor'
@@ -19,11 +21,9 @@ module.exports = React.createClass
     strategyCode: dummyUserCode
 
   componentDidMount: ->
-    fetch '/api/assets', 'Accept': 'application/json'
-      .then (response) -> do response.json
+    api.get '/assets'
       .then (assets) => @setState availableAssets: assets
-    fetch '/api/strategies', 'Accept': 'application/json'
-      .then (response) -> do response.json
+    api.get '/strategies'
       .then (strategies) => @setState availableStrategies: strategies
 
   setSelectedAssets: (assets) ->
