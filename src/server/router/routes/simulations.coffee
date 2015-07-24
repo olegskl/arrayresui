@@ -2,10 +2,10 @@ fs = require 'fs'
 R = require 'ramda'
 
 express = require 'express'
-sendJSONFile = require '../utils/sendJSONFile'
+sendJSONFile = require '../../utils/sendJSONFile'
 
 getFileName = (assetId, strategyId) ->
-  "#{__dirname}/../mockResponses/history/#{assetId}/#{strategyId}/reply.json"
+  "#{__dirname}/../../mockResponses/history/#{assetId}/#{strategyId}/reply.json"
 
 module.exports = (do express.Router)
   .post '/', (request, response) ->
