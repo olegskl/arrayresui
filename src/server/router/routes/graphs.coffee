@@ -2,9 +2,9 @@
 
 fs = require 'fs'
 express = require 'express'
-sendJSONFile = require '../utils/sendJSONFile'
+sendJSONFile = require '../../utils/sendJSONFile'
 
-rootDir = "#{__dirname}/../mockResponses/graph/"
+rootDir = "#{__dirname}/../../mockResponses/graph/"
 
 module.exports = (do express.Router)
   .get '/:graphName/:assetId/:strategyId/:simulationId', (request, response) ->

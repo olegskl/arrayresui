@@ -1,18 +1,8 @@
 React = require 'react'
 { Navigation } = require 'react-router'
 
-firebase = require '../shared/firebase'
-
 module.exports = React.createClass
   mixins: [Navigation]
-
-  delegateAuth: ->
-    firebase.authWithOAuthPopup 'google', (error, authData) =>
-      if error
-        console.log 'Login Failed!', error
-      else
-        console.log 'Authenticated successfully with payload:', authData
-        @transitionTo 'app'
 
   render: ->
     <section className="app-login">
@@ -21,8 +11,8 @@ module.exports = React.createClass
           ArrayResolution
         </h1>
         <a
-         className="app-login__action-button"
-         onClick={@delegateAuth}>
+         href="/auth/google"
+         className="app-login__action-button">
           Login with Google
         </a>
       </div>

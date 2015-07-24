@@ -1,6 +1,5 @@
 'use strict'
 
-fs = require 'fs'
 express = require 'express'
 
 module.exports = (do express.Router)
@@ -8,3 +7,4 @@ module.exports = (do express.Router)
   .use '/strategies', require './routes/strategies'
   .use '/simulations', require './routes/simulations'
   .use '/graphs', require './routes/graphs'
+  .use '/users', require './routes/users'
