@@ -1,11 +1,17 @@
 'use strict'
 
+R = require 'ramda'
 express = require 'express'
 expressSession = require 'express-session'
 passport = require 'passport'
 passportGoogle = require 'passport-google-oauth'
+connectRedis = require 'connect-redis'
 
 env = require '../env'
+
+# Session options:
+RedisStore = connectRedis expressSession
+sessionOptions = R.merge env.SESSION, store: new RedisStore
 
 # Authentication strategies:
 GoogleStrategy = passportGoogle.OAuth2Strategy
@@ -15,8 +21,10 @@ strategyCallback = (accessToken, refreshToken, profile, done) ->
 
 passport.use new GoogleStrategy env.GOOGLE_STRATEGY, strategyCallback
 
-passport.serializeUser (user, done) -> done null, user
-passport.deserializeUser (user, done) -> done null, user
+userSerializer = (user, done) -> done null, user.id
+userDeserializer = (serializedUser, done) -> done null, serializedUser
+passport.serializeUser userSerializer
+passport.deserializeUser userDeserializer
 
 googleAuthInit = passport
   .authenticate 'google', scope: ['https://www.googleapis.com/auth/plus.login']
@@ -28,7 +36,7 @@ authLogout = (request, response) ->
   response.redirect '/'
 
 module.exports = (do express.Router)
-  .use expressSession env.SESSION
+  .use expressSession sessionOptions
   .use do passport.initialize
   .use do passport.session
   .get '/auth/logout', authLogout
