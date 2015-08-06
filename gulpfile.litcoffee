@@ -7,9 +7,7 @@ This is the build system for ArrayResUi.
 - Run `gulp dev:build` to build a development version.
 - Run `gulp dist:build` to build a distribution version.
 
-By default both *dev* and *dist* will write the generated code to the *./build*
-folder. Use `--dest` option to modify this behavior. Useful when deploying to
-the production environment, e.g. `gulp dist --dest="/srv/arrayresui"`.
+Both *dev* and *dist* will write the generated code to the *./build* folder.
 
 
     require('gulp')

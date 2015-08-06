@@ -12,8 +12,4 @@ module.exports = (done) ->
   del = require 'del'
   config = require '../../config'
 
-  # We need the force options to allow working
-  # on directories outside the cwd:
-  delOptions = force: yes
-
-  del config.dest.buildRoot, delOptions, done
+  del config.dest.buildRoot, done
