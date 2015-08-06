@@ -2,7 +2,8 @@
 
 module.exports =
   STATIC_DIR: 'static'
-  CACHE_AGE: parseInt process.env.ARRAYRES_CACHE_AGE, 10
+  CACHE_AGE_INDEX: parseInt process.env.ARRAYRES_CACHE_AGE_INDEX, 10
+  CACHE_AGE_ASSETS: parseInt process.env.ARRAYRES_CACHE_AGE_ASSETS, 10
   PORT: parseInt process.env.ARRAYRES_PORT, 10
   SESSION:
     secret: process.env.ARRAYRES_SESSION_SECRET
