@@ -31,13 +31,16 @@ ensureAuthenticated = (request, response, next) ->
     .status 401
     .json error: 'not authenticated'
 
+# Static file server middleware:
 staticDir = path.resolve __dirname, env.STATIC_DIR
-staticFileServer = serveStatic staticDir, maxAge: env.CACHE_AGE
+staticFileServer = serveStatic staticDir,
+  maxAge: env.CACHE_AGE_ASSETS
+  index: false
 
 # HTML5 mode middleware:
 indexFileServer = (request, response) ->
   indexFilePath = path.resolve staticDir, 'index.html'
-  response.sendFile indexFilePath, maxAge: env.CACHE_AGE
+  response.sendFile indexFilePath, maxAge: env.CACHE_AGE_INDEX
 
 # Server:
 (do express)
