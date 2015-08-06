@@ -3,10 +3,6 @@
 # @module gulp/config
 #
 
-minimist = require 'minimist'
-
-argv = minimist process.argv[2..]
-
 src = {}
 dest = {}
 
@@ -60,7 +56,7 @@ src.serverData = [
 # Source files and folders
 # --------------------
 
-dest.buildRoot = argv.dest or 'build'
+dest.buildRoot = 'build'
 
 dest.serverRoot = "#{dest.buildRoot}/server"
 
