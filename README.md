@@ -1,5 +1,7 @@
 # ArrayResUi
 
+[![Join the chat at https://gitter.im/olegskl/arrayresui](https://badges.gitter.im/olegskl/arrayresui.svg)](https://gitter.im/olegskl/arrayresui?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Installation
 
  1. Install [node.js](https://nodejs.org/)
